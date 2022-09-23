@@ -2,7 +2,57 @@
 
 WindowManager:
     MainScreen:
+    FileScreen:
 
 <MainScreen>:
-    Label:
-        text: 'Hello World'
+    name: 'MainScreen'
+
+    FloatLayout:
+        Label:
+            text: 'Python Runtime Comparer'
+            font_size: 35
+            size_hint: 1, 0.1
+            pos_hint: {'y': 0.85}
+        
+        BoxLayout:
+            orientation: 'horizontal'
+            size_hint: 0.5, 0.1
+            pos_hint: {'y': 0.5, 'x': 0.1}
+
+            TextInput:
+
+            Button:
+                text: 'Select'
+                size_hint: 0.25, 1
+                on_press:
+                    root.manager.transition.direction = 'left'
+                    root.manager.current = 'FileScreen'
+
+<FileScreen>:
+    name: 'FileScreen'
+
+    BoxLayout:
+        orientation: 'vertical'
+
+        BoxLayout:
+            size_hint: 1, 0.1
+            orientation: 'horizontal'
+            spacing: 10
+
+            Button:
+                size_hint: 0.05, 1
+                text: '<'
+                on_press:
+                    root.manager.transition.direction = 'right'
+                    root.manager.current = 'MainScreen'
+
+            Label:
+                text: 'Choose input file'
+                font_size: 25
+                text_size: self.size
+                halign: 'left'
+                valign: 'middle'
+
+        FileChooserListView:
+            path: 'C:\\Users'
+            on_selection: root.selectFile(self.selection)
