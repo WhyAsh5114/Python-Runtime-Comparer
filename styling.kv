@@ -15,18 +15,78 @@ WindowManager:
             pos_hint: {'y': 0.85}
         
         BoxLayout:
-            orientation: 'horizontal'
-            size_hint: 0.5, 0.1
-            pos_hint: {'y': 0.5, 'x': 0.1}
+            orientation: 'vertical'
+            size_hint: 0.5, 0.125
+            pos_hint: {'y': 0.65, 'x': 0.25}
 
-            TextInput:
+            Label:
+                text: 'Program to run'
+                font_size: 20
 
-            Button:
-                text: 'Select'
-                size_hint: 0.25, 1
-                on_press:
-                    root.manager.transition.direction = 'left'
-                    root.manager.current = 'FileScreen'
+            BoxLayout:
+                orientation: 'horizontal'
+
+                TextInput:
+                    id: input_file_text_input
+                    multiline: False
+
+                Button:
+                    text: 'Select'
+                    size_hint: 0.25, 1
+                    on_press:
+                        root.choose_file('runner')
+                        root.manager.transition.direction = 'left'
+                        root.manager.current = 'FileScreen'
+        
+        GridLayout:
+            cols: 2
+            size_hint: 0.9, 0.1
+            spacing: 20
+            pos_hint: {'x': 0.05, 'y': 0.5}
+
+            BoxLayout:
+                orientation: 'vertical'
+
+                Label:
+                    text: 'Input File'
+                    font_size: 18
+
+                BoxLayout:
+                    orientation: 'horizontal'
+
+                    TextInput:
+                        id: input_file_text_input
+                        multiline: False
+
+                    Button:
+                        text: 'Select'
+                        size_hint: 0.25, 1
+                        on_press:
+                            root.choose_file('input')
+                            root.manager.transition.direction = 'left'
+                            root.manager.current = 'FileScreen'
+            
+            BoxLayout:
+                orientation: 'vertical'
+
+                Label:
+                    text: 'Output File'
+                    font_size: 18
+
+                BoxLayout:
+                    orientation: 'horizontal'
+
+                    TextInput:
+                        id: input_file_text_input
+                        multiline: False
+
+                    Button:
+                        text: 'Select'
+                        size_hint: 0.25, 1
+                        on_press:
+                            root.choose_file('output')
+                            root.manager.transition.direction = 'left'
+                            root.manager.current = 'FileScreen'
 
 <FileScreen>:
     name: 'FileScreen'
