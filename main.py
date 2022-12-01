@@ -11,10 +11,10 @@ class MainScreen(Screen):
         selecting_file = choosing
     
     def update_start_button_text(self):
-        if self.ids['input_file_text_input'].text != '' and self.ids['output_file_text_input'].text != '' and self.ids['runner_file_text_input'].text != '':
+        if self.ids['input_file_text_input'].text != '' and self.ids['runner_file_text_input'].text != '':
             self.ids['start_button'].text = 'Start plot'
         else:
-            self.ids['start_button'].text = 'Select all 3 files to continue'
+            self.ids['start_button'].text = 'Select all 2 files to continue'
 
 
 class FileScreen(Screen):
@@ -28,8 +28,6 @@ class FileScreen(Screen):
         main_screen = self.manager.get_screen('MainScreen')
         if selecting_file == 'input':
             main_screen.ids['input_file_text_input'].text = selectedFile
-        elif selecting_file == 'output':
-            main_screen.ids['output_file_text_input'].text = selectedFile
         elif selecting_file == 'runner':
             main_screen.ids['runner_file_text_input'].text = selectedFile
         
