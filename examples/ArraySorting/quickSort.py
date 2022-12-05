@@ -1,5 +1,5 @@
 import time
-from numpy import array
+from numpy import array, sort
 
 f = open('input.txt', 'r')
 data = f.read()
@@ -7,7 +7,7 @@ f.close()
 data = array([int(x) for x in data.split()])
 start_time = time.time()
 
-def partition(array, low, high):
+'''def partition(array, low, high):
     pivot = array[high]
     i = low - 1
     for j in range(low, high):
@@ -24,7 +24,9 @@ def quickSort(array, low, high):
         quickSort(array, low, pi - 1)
         quickSort(array, pi + 1, high)
 
-quickSort(data, 0, len(data) - 1)
+quickSort(data, 0, len(data) - 1)'''
+sort(data, kind='quicksort')
+
 
 end_time = time.time()
 f = open('output.txt', 'w+')
