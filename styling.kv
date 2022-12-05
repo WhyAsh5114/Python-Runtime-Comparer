@@ -3,6 +3,7 @@
 WindowManager:
     MainScreen:
     FileScreen:
+    GraphScreen:
 
 <MainScreen>:
     name: 'MainScreen'
@@ -79,6 +80,30 @@ WindowManager:
             on_release:
                 root.start_plot()
 
+<GraphScreen>:
+    name: 'GraphScreen'
+
+    FloatLayout:
+        BoxLayout:
+            orientation: 'horizontal'
+            size_hint: 1, 0.1
+            pos_hint: {'y': 0.9}
+
+            Button:
+                text: '<'
+                font_size: 25
+                size_hint: 0.05, 1
+                on_press:
+                    root.manager.transition.direction = 'right'
+                    root.manager.current = 'MainScreen'
+            
+            Label:
+                text: 'Runtime graph'
+                font_size: 25
+
+        BoxLayout:
+            id: main_layout
+            size_hint: 1, 0.9
 
 <FileScreen>:
     name: 'FileScreen'
@@ -94,6 +119,7 @@ WindowManager:
             Button:
                 size_hint: 0.05, 1
                 text: '<'
+                font_size: 25
                 on_press:
                     root.manager.transition.direction = 'right'
                     root.manager.current = 'MainScreen'
@@ -107,5 +133,5 @@ WindowManager:
 
         FileChooserListView:
             id: file_chooser
-            path: 'C:\\Users'
+            path: 'D:\\Programming\\Python\\Python-Runtime-Comparer\\examples\\ArraySorting'
             on_selection: root.selectFile(self.selection)
